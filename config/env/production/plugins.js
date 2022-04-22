@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = ({ env }) => ({
   'wysiwyg': {
     enabled: true,
     resolve: './src/plugins/wysiwyg'
@@ -21,4 +21,4 @@ module.exports = {
       },
     },
   },
-}
+})
