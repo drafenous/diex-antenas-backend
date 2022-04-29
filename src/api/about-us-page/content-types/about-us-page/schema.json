@@ -1,11 +1,10 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "about_us_pages",
   "info": {
     "singularName": "about-us-page",
     "pluralName": "about-us-pages",
-    "displayName": "About Us Page",
-    "description": ""
+    "displayName": "About Us Page"
   },
   "options": {
     "draftAndPublish": true
@@ -23,7 +22,6 @@
         }
       },
       "type": "string",
-      "unique": true,
       "required": true
     },
     "pageContent": {
