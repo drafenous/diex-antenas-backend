@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resellers",
+  "info": {
+    "singularName": "reseller",
+    "pluralName": "resellers",
+    "displayName": "Reseller"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "resellerName": {
+      "type": "string",
+      "required": true
+    },
+    "pageUrl": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "resellers"
+    }
+  }
+}
