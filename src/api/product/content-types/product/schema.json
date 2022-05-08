@@ -4,7 +4,7 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "product",
+    "displayName": "Product",
     "description": ""
   },
   "options": {
@@ -86,12 +86,6 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "products"
-    },
-    "resellers": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::reseller.reseller",
-      "mappedBy": "product"
     }
   }
 }
