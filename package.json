@@ -21,7 +21,6 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@strapi-community/cloudinary-media-library": "^1.0.3",
     "@strapi/plugin-cloud": "5.36.1",
     "@strapi/plugin-users-permissions": "5.36.1",
     "@strapi/provider-upload-cloudinary": "^5.36.1",
@@ -42,7 +41,7 @@
     "uuid": "2226c318-a1c7-400d-90fa-fb5d3245434a"
   },
   "engines": {
-    "node": ">=20.0.0 <=24.x.x",
+    "node": ">=20.0.0 <=22.x.x",
     "npm": ">=6.0.0"
   }
 }
