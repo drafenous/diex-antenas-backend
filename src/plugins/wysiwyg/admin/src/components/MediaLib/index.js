@@ -7,11 +7,18 @@ const MediaLib = ({ isOpen, onChange, onToggle }) => {
   const MediaLibraryDialog = components["media-library"];
 
   const handleSelectAssets = (files) => {
-    const formattedFiles = files.map((f) => ({
-      alt: f.alternativeText || f.name,
-      url: prefixFileUrlWithBackendUrl(f.url),
-      mime: f.mime,
-    }));
+    const formattedFiles = files.map((f) => {
+      // Use URL as-is when already absolute (e.g. Cloudinary); otherwise prefix with backend URL
+      const url =
+        f.url && (f.url.startsWith('http://') || f.url.startsWith('https://'))
+          ? f.url
+          : prefixFileUrlWithBackendUrl(f.url);
+      return {
+        alt: f.alternativeText || f.name,
+        url,
+        mime: f.mime,
+      };
+    });
 
     onChange(formattedFiles);
   };

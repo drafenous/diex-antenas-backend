@@ -9,9 +9,10 @@ module.exports = ({ env }) => ({
         },
         actionOptions: {
           upload: {
-            upload: {
-              folder: env("CLOUDINARY_FOLDER"),
-            }
+            folder: env('CLOUDINARY_FOLDER', 'strapi-uploads'),
+          },
+          uploadStream: {
+            folder: env('CLOUDINARY_FOLDER', 'strapi-uploads'),
           },
           delete: {},
         },
