@@ -4,18 +4,31 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
+    "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "dev": "strapi develop",
     "develop": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
+  },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.1.8",
-    "@strapi/plugin-users-permissions": "4.1.8",
-    "@strapi/provider-upload-cloudinary": "^4.1.8",
-    "@strapi/strapi": "4.1.8",
-    "better-sqlite3": "7.4.6",
+    "@strapi/plugin-cloud": "5.36.1",
+    "@strapi/plugin-users-permissions": "5.36.1",
+    "@strapi/strapi": "5.36.1",
+    "better-sqlite3": "12.4.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0",
     "pg": "^8.7.3",
     "pg-connection-string": "^2.5.0"
   },
@@ -26,11 +39,7 @@
     "uuid": "2226c318-a1c7-400d-90fa-fb5d3245434a"
   },
   "engines": {
-    "node": ">=12.x.x <=16.x.x",
+    "node": ">=20.0.0 <=24.x.x",
     "npm": ">=6.0.0"
-  },
-  "license": "MIT",
-  "workspaces": [
-    "./src/plugins/*"
-  ]
+  }
 }
