@@ -21,6 +21,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@strapi-community/cloudinary-media-library": "^1.0.3",
     "@strapi/plugin-cloud": "5.36.1",
     "@strapi/plugin-users-permissions": "5.36.1",
     "@strapi/provider-upload-cloudinary": "^5.36.1",
