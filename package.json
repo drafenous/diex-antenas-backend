@@ -37,6 +37,8 @@
     "zod": "^3.25.0"
   },
   "optionalDependencies": {
+    "@img/sharp-linuxmusl-x64": "0.33.5",
+    "@img/sharp-libvips-linuxmusl-x64": "1.0.4",
     "@rollup/rollup-linux-x64-musl": "4.59.0",
     "@swc/core-linux-x64-gnu": "1.15.13",
     "@swc/core-linux-x64-musl": "1.15.13"
