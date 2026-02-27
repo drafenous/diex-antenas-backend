@@ -1,16 +1,19 @@
 #!/usr/bin/env node
 /**
- * Fail build when Node >= 24 (e.g. on Strapi Cloud).
- * @swc/core native binding does not support Node 24; use Node 22.
- * See STRAPI_CLOUD_NODE.md
+ * Require Node 22.x for build. @swc/core native binding fails on Node 24 and can
+ * be unreliable on other versions. See STRAPI_CLOUD_NODE.md
  */
 const v = process.versions.node;
 const major = parseInt(v.split('.')[0], 10);
-if (major >= 24) {
+
+// Log so Strapi Cloud build output shows which Node is used
+console.log('Node version:', v, '| platform:', process.platform, process.arch);
+
+if (major !== 22) {
   console.error(`
-\u001b[31mBuild requires Node 22. Current: Node ${v}.
-Set Node version to 22 in Strapi Cloud: Settings → General → Node version.
-See STRAPI_CLOUD_NODE.md\u001b[0m
+\u001b[31mBuild requires Node 22.x. Current: Node ${v}.
+- Strapi Cloud: set Node to 22 in environment Configuration → Basic information → Node version.
+- See STRAPI_CLOUD_NODE.md\u001b[0m
 `);
   process.exit(1);
 }
