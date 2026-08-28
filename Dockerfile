@@ -1,27 +1,48 @@
-# Build and run with Node 22 (required for @swc/core native bindings and Strapi 5)
-FROM node:22-alpine AS base
+FROM node:22-alpine AS builder
 
-FROM base AS deps
+RUN apk add --no-cache \
+    build-base \
+    gcc \
+    autoconf \
+    automake \
+    zlib-dev \
+    libpng-dev \
+    vips-dev \
+    git \
+    python3
+
 WORKDIR /app
-COPY package.json package-lock.json* ./
+
+COPY package.json package-lock.json ./
+
 RUN npm ci
 
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
 ENV NODE_ENV=production
+ENV STRAPI_TELEMETRY_DISABLED=true
+
 RUN npm run build
 
-FROM base AS runner
+# Remove dependências usadas somente no build
+RUN npm prune --omit=dev
+
+
+FROM node:22-alpine AS runner
+
+RUN apk add --no-cache vips-dev
+
 WORKDIR /app
+
 ENV NODE_ENV=production
-COPY --from=builder /app/build ./build
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/config ./config
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/api ./api
-COPY --from=builder /app/src ./src
-EXPOSE 1337
+ENV STRAPI_TELEMETRY_DISABLED=true
+
+COPY --from=builder /app ./
+
+RUN chown -R node:node /app
+
+USER node
+
+EXPOSE 8080
+
 CMD ["npm", "run", "start"]
