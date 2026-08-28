@@ -112,3 +112,10 @@ exports
 *.cache
 build
 .strapi-updater.json
+
+
+############################
+# Google Cloud Run
+############################
+cloudrun.env.yaml
+cloudrun.env
