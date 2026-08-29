@@ -41,6 +41,29 @@ jobs:
           source: .
           timeout: 300s
 
+          env_vars_update_strategy: overwrite
+
+          env_vars: |-
+            ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }}
+            API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }}
+            APP_KEYS=${{ secrets.APP_KEYS }}
+            JWT_SECRET=${{ secrets.JWT_SECRET }}
+            TRANSFER_TOKEN_SALT=${{ secrets.TRANSFER_TOKEN_SALT }}
+            CLOUDINARY_FOLDER=${{ secrets.CLOUDINARY_FOLDER }}
+            CLOUDINARY_KEY=${{ secrets.CLOUDINARY_KEY }}
+            CLOUDINARY_NAME=${{ secrets.CLOUDINARY_NAME }}
+            CLOUDINARY_SECRET=${{ secrets.CLOUDINARY_SECRET }}
+            DATABASE_CLIENT=${{ secrets.DATABASE_CLIENT }}
+            DATABASE_HOST=${{ secrets.DATABASE_HOST }}
+            DATABASE_NAME=${{ secrets.DATABASE_NAME }}
+            DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
+            DATABASE_PORT=${{ secrets.DATABASE_PORT }}
+            DATABASE_SSL=${{ secrets.DATABASE_SSL }}
+            DATABASE_SSL_REJECT_UNAUTHORIZED=${{ secrets.DATABASE_SSL_REJECT_UNAUTHORIZED }}
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
+            DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
+            NODE_ENV=${{ secrets.NODE_ENV }}
+
           flags: >-
             --cpu=1
             --memory=2Gi
